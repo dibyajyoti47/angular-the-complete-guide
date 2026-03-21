@@ -1,0 +1,29 @@
+<main>
+  <app-learning-resources  />
+
+  <hr />
+
+  <app-auth />
+  @if(isAdmin()) {
+  <p>
+    Only Admin should see this!
+  </p>
+  }
+  <p *ngIf="isAdmin()">
+    Only Admin should see this! from the structural directive
+  </p>
+  <ng-template appAuth="admin">
+    <p >
+      Only Admin should see this! from the structural directive part 2
+    </p>
+  </ng-template>
+  <p *appAuth="'admin'" class="protected-content admin">
+      Only Admin should see this! from the structural directive part 3
+  </p>
+  <p *appAuth="'user'" class="protected-content unauthenticated">
+      Regular users should see this! from the structural directive part 3
+  </p>
+  <p *appAuth="'guest'" class="protected-content authenticated">
+      Guest users Admin should see this! from the structural directive part 3
+  </p>
+</main>
